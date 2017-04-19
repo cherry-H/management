@@ -3,8 +3,8 @@
 @section('content')
 
   <div class="special-form">
-      <a href="{{ route('home') }}"><img src="{{ \App\Helpers\Helpers::logoUrl()  }}" alt=""></a>
-      <h3 class="text-center">LOGIN</h3>
+      <a href="{{ route('home') }}">{{--<img src="{{ \App\Helpers\Helpers::logoUrl()  }}" alt="">--}}</a>
+      <h2 class="text-center">LOGIN</h2>
       @if ($errors->first())
           <span class="status-msg error-msg">{{ $errors->first() }}</span>
       @endif
@@ -19,10 +19,22 @@
             {!! Form::password( 'password', array('class' => 'form-control', "placeholder" => "Password" )) !!}
         </div>
         <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember Me
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
             {!! Form::submit( 'Login', array('class' => 'btn btn-primary btn-wide')) !!}
         </div>
     {!! Form::close() !!}
-    <p>Don't have an account? <a href="{{ route('register') }}">register</a></p>
+    <p>
+        Don't have an account? <a href="{{ route('register') }}">register</a>
+        OR   <a href="{{ url('/password/email') }}">Forgot Your Password?</a>
+    </p>
   </div>
 
 @stop
