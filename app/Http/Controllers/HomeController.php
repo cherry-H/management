@@ -17,7 +17,7 @@ class HomeController extends BaseController {
 		if( Auth::check() ) {
 			return View::make('ins/hud')->with('pTitle', "Hud");
 		}else{
-			return View::make('index')->with('pTitle', "A project management system for artisans");
+			return View::make('consicion_templates.home')->with('pTitle', "A project management system for artisans");
 		}
 	}
 
