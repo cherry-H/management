@@ -68,3 +68,8 @@ Route::group(['prefix' => '/api/'], function()
 
 //----------------- Admin routes
 Route::get('admin','AdminController@index');
+
+//-----------------Forgot Password
+Route::get('/password/email', function() {
+    return View::make('emails.auth.password')->with('pTitle', "Forgot Password");
+});
