@@ -17,7 +17,7 @@
         @yield('content')
       </div>
       <div class="footer">
-        <p>Copyright {{ date("Y") }} &copy;  <a style="color: #00BCD4" href="https://twitter.com/ribbbon_app" target="_blank">Jefry Cruz</a></p>
+        <p>Copyright {{ date("Y") }} &copy;  </p>
       </div>
     </div>
   </div>

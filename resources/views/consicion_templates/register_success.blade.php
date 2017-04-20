@@ -11,7 +11,7 @@
         <hr>
         <br>
         <p>
-            Please check the email. OR <a href="{{ route('home') }}">Click here to return to</a>
+            Please check the email. OR <a href="{{ route('backHome') }}">Click here to return to</a>
         </p>
     </div>
 
