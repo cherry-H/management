@@ -10,7 +10,7 @@
   <div id="email" style="background-color: #e1f2f1; width: 100%;">
     <div class="container" style="background-color: #393d4d; color: #fff; margin: auto; max-width: 650px; padding: 25px; text-align: center;">
       <div class="header">
-        <img src="{{ \App\Helpers\Helpers::logoUrl() }}" alt="Ribbbon Logo">
+        {{--<img src="{{ asset('assets/img/galactic_star_background.png') }}" alt="Ribbbon Logo">--}}
       </div>
       <div class="body">
         <h1 style="color: #26b2ad;">@yield('title')</h1>

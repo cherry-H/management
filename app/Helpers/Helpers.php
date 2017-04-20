@@ -48,7 +48,7 @@ class Helpers {
 
 		Mail::send('emails.welcome', [ 'name' => $data['name'] ] , function($message) use ($data){
 			$message->from(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
-	        $message->to($data['to'], $data['name'] )->subject('Welcome to Ribbbon');
+	        $message->to($data['to'], $data['name'] )->subject('Welcome to manage system');
 		});
 	}
 
