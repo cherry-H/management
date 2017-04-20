@@ -93,7 +93,8 @@ class UsersController extends BaseController {
 
 		if ( Auth::attempt(array('email' => $email, 'password' => $password)) ) {
 			Helpers::sendWelcomeMail();
-			return Redirect::to('hud');
+			return View::make('consicion_templates.register_success')->with('pTitle', "REGISTER SUCCESS");
+			//return Redirect::to('hud');
 		}
 
 		return Redirect::back()->withErrors($validator);

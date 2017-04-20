@@ -71,7 +71,7 @@ Route::get('admin','AdminController@index');
 
 //-----------------Forgot Password
 Route::get('/password/email', function() {
-    return View::make('emails.auth.password')->with('pTitle', "Forgot Password");
+    return View::make('emails.auth.forgot_password')->with('pTitle', "Forgot Password");
 });
 
 Route::group(['namespace' => 'Auth'], function () {
