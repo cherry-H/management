@@ -50,7 +50,7 @@ class UsersController extends BaseController {
 		if ($validator->fails()){
 		    return Redirect::back()->withErrors($validator)->withInput();
 		}else{
-			if( Auth::attempt(array('email' => $email, 'password' => $password)) ){				
+			if( Auth::attempt(array('email' => $email, 'password' => $password), (boolean)Input::get('remember me'))) {
 				return Redirect::to('hud');
 			}else{				
 				$validator->getMessageBag()->add('input', 'Incorrect email or password');
@@ -58,6 +58,36 @@ class UsersController extends BaseController {
 			}			
 		}
 	}	
+
+	// Forgot password send email
+    public function forgotPassword()
+    {
+        $fullName	=	Input::get('fullName');
+        $email = Input::get('email');
+
+        if (strlen(trim($email)) === 0) {
+            return $this->setStatusCode(200)->makeResponse('You need to provide an email.');
+        }
+
+        $validator = Validator::make(
+            array(
+                'fullName' 	=> 	$fullName,
+                'email' 	=>	$email,
+            ),
+            array(
+                'fullName' 	=> 	'required',
+                'email'		=> 	'required|email|exists:users',
+            )
+        );
+
+        if ($validator->fails()){
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        Helpers::sendForgotPasswordMail($fullName, $email);
+
+        return View::make('consicion_templates.find_password_success')->with('pTitle', "Find Password Success");
+    }
 
 	// Register the user and start a new session
 	public function register()

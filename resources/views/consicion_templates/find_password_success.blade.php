@@ -4,7 +4,7 @@
 
     <div class="special-form">
         <a href="{{ route('home') }}">{{--<img src="{{ \App\Helpers\Helpers::logoUrl()  }}" alt="">--}}</a>
-        <h1 class="text-center">REGISTER SUCCESS</h1>
+        <h1 class="text-center">SEND EMAIL SUCCESS</h1>
         @if ($errors->first())
             <span class="status-msg error-msg">{{ $errors->first() }}</span>
         @endif

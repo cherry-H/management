@@ -40,7 +40,8 @@ class Helpers {
 	********************************/
 
 	// Send the welcome email to the user
-	static function sendWelcomeMail() {
+	static function sendWelcomeMail()
+    {
 		$data = [
 				'to' 	=> Auth::user()->email,
 				'name' 	=> Auth::user()->full_name
@@ -65,4 +66,18 @@ class Helpers {
 			$message->to($data['to'], '')->subject('You have been invited to a new project');
 		});
 	}
+
+	// Send forgot password email
+    static function sendForgotPasswordMail($fullName, $email)
+    {
+        $data = [
+            'to'   => $email,
+            'name' => $fullName,
+        ];
+
+        Mail::send('emails.findpasswordmail', ['name' => $data['name']], function ($message) use ($data) {
+            $message->from(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
+            $message->to($data['to'], $data['name'])->subject('Find Password');
+        });
+    }
 }

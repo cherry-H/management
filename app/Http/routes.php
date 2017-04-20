@@ -69,16 +69,13 @@ Route::group(['prefix' => '/api/'], function()
 //----------------- Admin routes
 Route::get('admin','AdminController@index');
 
-//-----------------Forgot Password
-Route::get('/password/email', function() {
-    return View::make('emails.auth.forgot_password')->with('pTitle', "Forgot Password");
+//-----------------Find Password
+Route::get('/findPassword', function() {
+    return View::make('consicion_templates.find_password_home')->with('pTitle', "Find Password");
 });
-
+Route::post('/findPassword/send', 'UsersController@forgotPassword');
 //-----------------Home
 Route::get('/homeStart', function () {
     return View::make('consicion_templates.home')->with('pTitle', "A project management system for artisans");
 })->name('backHome');
 
-Route::group(['namespace' => 'Auth'], function () {
-    Route::get('/aaa', 'PasswordController@say');
-});
