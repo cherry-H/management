@@ -69,13 +69,21 @@ Route::group(['prefix' => '/api/'], function()
 //----------------- Admin routes
 Route::get('admin','AdminController@index');
 
-//-----------------Find Password
-Route::get('/findPassword', function() {
-    return View::make('consicion_templates.find_password_home')->with('pTitle', "Find Password");
-});
-Route::post('/findPassword/send', 'UsersController@findPassword');
 //-----------------Home
 Route::get('/homeStart', function () {
     return View::make('consicion_templates.home')->with('pTitle', "A project management system for artisans");
 })->name('backHome');
 
+//-----------------Set Password
+Route::get('/setPassword', function () {
+    return View::make('consicion_templates.set_password')->with('pTitle', "Set Paassword");
+});
+Route::post('/setPassword/set', 'UsersController@setPassword');
+
+// 发送密码重置链接路由
+Route::get('/password/email', 'Auth\PasswordController@getEmail');
+Route::post('/password/email', 'Auth\PasswordController@postEmail');
+
+// 密码重置路由
+Route::get('/password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('/password/reset', 'Auth\PasswordController@postReset');

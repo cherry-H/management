@@ -219,4 +219,18 @@ class UsersController extends BaseController {
         User::where('id', Auth::id())->delete();
     }
 
+    public function setPassword()
+    {echo 333;die;
+        $newPasswd = Input::get('password');
+        $confirmPasswd = Input::get('password_confirm');
+
+        $validator = Validator::make(
+            array(
+                'password' 	=> 	$newPasswd
+            ),
+            array(
+                'password'	=>	'required'
+            )
+        );
+    }
 }

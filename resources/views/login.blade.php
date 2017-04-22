@@ -33,7 +33,7 @@
     {!! Form::close() !!}
     <p>
         Don't have an account? <a href="{{ route('register') }}">register</a>
-        OR   <a href="{{ url('/findPassword') }}">Forgot Your Password?</a>
+        OR   <a href="{{ url('/password/email') }}">Forgot Your Password?</a>
     </p>
   </div>
 
