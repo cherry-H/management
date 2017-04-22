@@ -10,7 +10,7 @@
         @endif
         <hr>
         <p>
-            Please check the email. OR <a href="{{ route('backHome') }}">Click here to return to</a>
+            Please check the email. And <a href="{{ route('backHome') }}">Click here to return to</a>
         </p>
     </div>
 

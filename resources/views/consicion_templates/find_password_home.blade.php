@@ -9,7 +9,7 @@
             <span class="status-msg error-msg">{{ $errors->first() }}</span>
         @endif
         <hr>
-        {!! Form::open(array('action' => 'UsersController@forgotPassword')) !!}
+        {!! Form::open(array('action' => 'UsersController@findPassword')) !!}
         <div class="form-group">
             <label for="email" class="color-primary">Email:</label>
             {!! Form::text( 'email', null, array('class' => 'form-control', "placeholder" => "Email","autofocus" => "true" )) !!}

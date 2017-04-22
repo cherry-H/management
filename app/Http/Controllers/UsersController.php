@@ -60,7 +60,7 @@ class UsersController extends BaseController {
 	}	
 
 	// Forgot password send email
-    public function forgotPassword()
+    public function findPassword()
     {
         $fullName	=	Input::get('fullName');
         $email = Input::get('email');
@@ -71,12 +71,12 @@ class UsersController extends BaseController {
 
         $validator = Validator::make(
             array(
-                'fullName' 	=> 	$fullName,
-                'email' 	=>	$email,
+                'full_name' => $fullName,
+                'email'     => $email,
             ),
             array(
-                'fullName' 	=> 	'required',
-                'email'		=> 	'required|email|exists:users',
+                'full_name' => 'required|exists:users',
+                'email'     => 'required|email|exists:users',
             )
         );
 

@@ -73,7 +73,7 @@ Route::get('admin','AdminController@index');
 Route::get('/findPassword', function() {
     return View::make('consicion_templates.find_password_home')->with('pTitle', "Find Password");
 });
-Route::post('/findPassword/send', 'UsersController@forgotPassword');
+Route::post('/findPassword/send', 'UsersController@findPassword');
 //-----------------Home
 Route::get('/homeStart', function () {
     return View::make('consicion_templates.home')->with('pTitle', "A project management system for artisans");
