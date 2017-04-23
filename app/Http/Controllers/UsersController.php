@@ -123,7 +123,7 @@ class UsersController extends BaseController {
 
 		if ( Auth::attempt(array('email' => $email, 'password' => $password)) ) {
 			Helpers::sendWelcomeMail();
-			return View::make('consicion_templates.register_success')->with('pTitle', "REGISTER SUCCESS");
+			return View::make('consicion_templates.register_success')->with('pTitle', "Register Success");
 			//return Redirect::to('hud');
 		}
 
