@@ -166,15 +166,31 @@ class UsersController extends BaseController {
 		    return Redirect::back()->withErrors($validator)->with('user', $user)->with('created', $created)->with('completed', $completed);
 		}
 
-		if ( !Auth::validate(array('email' => $user->email, 'password' => $current_pwd)) ) {
+        $validator_sec = Validator::make(
+            array(
+                'password'  => $current_pwd,
+                'email'     => $user->email,
+            ),
+            array(
+                'password'  => 'required|min:8',
+                'email'     => 'required|email|exists:users',
+            )
+        );
+
+        if ($validator_sec->fails()){
+            $validator->getMessageBag()->add('password', 'That password is incorrect');
+            return Redirect::back()->withErrors($validator)->with('user', $user)->with('created', $created)->with('completed', $completed);
+        }
+
+		/*if ( !Auth::validate(array('email' => $user->email, 'password' => $current_pwd)) ) {
 			$validator->getMessageBag()->add('password', 'That password is incorrect');
 			return Redirect::back()->withErrors($validator)->with('user', $user)->with('created', $created)->with('completed', $completed);	
-		}
+		}*/
 
 		// Store the new password and redirect;
 		$user->password = Hash::make($new_pwd);
 		$user->save();
-
+        return $this->setStatusCode(404)->makeResponse('User not found');
 		return Redirect::back()
 								->with('user', $user)
 								->with('created', $created)->with('completed', $completed)
