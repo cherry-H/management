@@ -140,7 +140,7 @@ class ProjectsController extends BaseController {
             return $this->setStatusCode(406)->makeResponse('Please enter a valid email!');
         }
 
-        $project_name	= Project::find($project_id)->pluck('name');
+        $project_name	= Project::find($project_id)->where(['user_id' => Auth::id()])->pluck('name');
         $owner_id	    = Project::find($project_id)->pluck('user_id');
         $project_url 	= url() . '/projects/'.$project_id;
         $invited_user   = User::whereEmail($email)->get();
