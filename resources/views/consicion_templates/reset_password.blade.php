@@ -11,7 +11,7 @@
         <hr>
         {!! Form::open(array('method' => "POST",'url' => '/password/reset', $token)) !!}
         <div class="form-group">
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            {!! Form::hidden('token', $token) !!}
         </div>
         <div class="form-group">
             <label for="email" class="color-primary">Email:</label>
