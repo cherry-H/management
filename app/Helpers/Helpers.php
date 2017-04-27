@@ -15,7 +15,7 @@ class Helpers {
 
 	// Return the image logo path
 	static public function logoUrl(){
-		return asset('assets/img/logo.png');
+		return asset('assets/img/logo_picture.png');
 	}
 
 	// Checks if the given user is the owner of the project

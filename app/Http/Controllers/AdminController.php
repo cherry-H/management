@@ -21,11 +21,11 @@ class AdminController extends BaseController {
             return Redirect::back();
         }
 
-        $users = User::all();
-        $n_users = count($users);
-        $n_tasks = Task::all()->count();
+        $users      = User::all();
+        $n_users    = count($users);
+        $n_tasks    = Task::all()->count();
         $n_projects = Project::all()->count();
-        $n_clients = Client::all()->count();
+        $n_clients  = Client::all()->count();
 
         return View::make('admin/index')
             ->with('pTitle', 'Admin')

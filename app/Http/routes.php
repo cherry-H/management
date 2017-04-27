@@ -1,8 +1,15 @@
 <?php
+
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('register', function(){ return View::make('register')->with('pTitle', "Register"); })->name('register');
-Route::get('login', function(){ return View::make('login')->with('pTitle', "Login"); })->name('login');
-Route::get('faq', function(){ return View::make('faq')->with('pTitle', "FAQ"); })->name('faq');
+Route::get('register', function () {
+    return View::make('register')->with('pTitle', "Register");
+})->name('register');
+Route::get('login', function () {
+    return View::make('login')->with('pTitle', "Login");
+})->name('login');
+Route::get('faq', function () {
+    return View::make('faq')->with('pTitle', "FAQ");
+})->name('faq');
 
 //----------------- User routes
 Route::resource('users', 'UsersController', array('only' => array('show')));
