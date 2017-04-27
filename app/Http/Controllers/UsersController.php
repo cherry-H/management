@@ -236,9 +236,11 @@ class UsersController extends BaseController {
     }
 
     public function setPassword()
-    {echo 333;die;
-        $newPasswd = Input::get('password');
+    {
+        $newPasswd     = Input::get('password');
         $confirmPasswd = Input::get('password_confirm');
+        $token = Input::get('token');
+        $email = Input::get('email');
 
         $validator = Validator::make(
             array(
