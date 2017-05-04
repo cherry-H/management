@@ -1,6 +1,7 @@
 <?php
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')
+    ->name('home');
 Route::get('register', function () {
     return View::make('register')->with('pTitle', "Register");
 })->name('register');
@@ -10,6 +11,11 @@ Route::get('login', function () {
 Route::get('faq', function () {
     return View::make('faq')->with('pTitle', "FAQ");
 })->name('faq');
+/*Route::get('contact', function () {
+    return View::make('contact')->with('pTitle', "Contact");
+})->name('contact');*/
+Route::get('contact', 'ContactController@showForm')->name('contact');
+Route::post('contact', 'ContactController@sendContactInfo');
 
 //----------------- User routes
 Route::resource('users', 'UsersController', array('only' => array('show')));

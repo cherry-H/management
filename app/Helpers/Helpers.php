@@ -75,7 +75,7 @@ class Helpers {
             'name' => $fullName,
         ];
 
-        Mail::send('emails.findpasswordmail', ['name' => $data['name']], function ($message) use ($data) {
+        Mail::send('emails.findPassword', ['name' => $data['name']], function ($message) use ($data) {
             $message->from(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
             $message->to($data['to'], $data['name'])->subject('Find Password');
         });

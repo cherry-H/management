@@ -1,6 +1,31 @@
 <?php
 
 /**
+ * mysql注入测试
+ */
+/*header('Content-type:text/html; charset=UTF-8');
+$username = isset($_GET['username']) ? $_GET['username'] : '';
+$userinfo = array();
+if($username){
+    //使用mysqli驱动连接demo数据库
+    $mysqli = new mysqli("localhost", "root", "123456", 'manage');
+    $sql = "SELECT uid,username FROM user WHERE username='{$username}'";
+    //mysqli multi_query 支持执行多条MySQL语句
+    $query = $mysqli->multi_query($sql);
+    if($query){
+        do {
+            $result = $mysqli->store_result();
+            while($row = $result->fetch_assoc()){
+                $userinfo[] = $row;
+            }
+            if(!$mysqli->more_results()){
+                break;
+            }
+        } while ($mysqli->next_result());
+    }
+}
+echo '<pre>',print_r($userinfo, 1),'</pre>';die;*/
+/**
  * Laravel - A PHP Framework For Web Artisans
  *
  * @package  Laravel

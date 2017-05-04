@@ -6,6 +6,38 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * App\Project
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $client_id
+ * @property string $name
+ * @property string $description
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $production
+ * @property string $stage
+ * @property string $dev
+ * @property string $github
+ * @property-read \App\Client $client
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Credential[] $credentials
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $members
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Task[] $tasks
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereClientId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereDev($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereGithub($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereProduction($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereStage($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Project whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Project extends Model {
 	protected $fillable = [
 			'user_id',

@@ -10,6 +10,47 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * App\User
+ *
+ * @property int $id
+ * @property string $full_name
+ * @property string $email
+ * @property string $password
+ * @property string $avatar
+ * @property int $tasks_created
+ * @property int $tasks_completed
+ * @property string $remember_token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $title
+ * @property string $bio
+ * @property string $link
+ * @property string $twitter
+ * @property string $facebook
+ * @property string $linkedin
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Client[] $clients
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Project[] $inProjects
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Project[] $projects
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Task[] $tasks
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereAvatar($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereBio($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereEmail($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereFacebook($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereFullName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereLink($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereLinkedin($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereTasksCompleted($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereTasksCreated($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereTwitter($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword;

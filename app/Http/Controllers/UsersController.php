@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
-use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use App\Helpers\Helpers;
 use Illuminate\Support\Facades\View;
-use App\Client;
-use App\Project;
-use App\Task;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use App\Helpers\Helpers;
 use App\Credential;
+use App\User;
+use App\Client;
+use App\Task;
+use App\Project;
 
 class UsersController extends BaseController {
 
