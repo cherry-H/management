@@ -39,7 +39,10 @@
             <div class="row">
                 <div class="col-xs-12">
                     <hr class="special">
-                    <p class="text-center last-line">Copyright {{ date("Y") }} &copy;  HXY | <a href="{{ route('contact') }}">Contect us</a></p>
+                    <p class="text-center last-line">Copyright {{ date("Y") }} &copy;  HXY
+                        | <a href="{{ route('contact') }}">Contect us</a>
+                        | <a href="{{ route('faq') }}">F.A.Q</a>
+                    </p>
                 </div>
             </div>
         </div>

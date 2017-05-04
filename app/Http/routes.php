@@ -9,7 +9,7 @@ Route::get('login', function () {
     return View::make('login')->with('pTitle', "Login");
 })->name('login');
 Route::get('faq', function () {
-    return View::make('faq')->with('pTitle', "FAQ");
+    return View::make('faq')->with('pTitle', "F.A.Q");
 })->name('faq');
 /*Route::get('contact', function () {
     return View::make('contact')->with('pTitle', "Contact");
