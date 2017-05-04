@@ -54,6 +54,12 @@
                 </div>
                 <div class="col-xs-12 col-md-8 right-side">
                     <div class="mega-menu">
+                        @if(Session::has('message'))
+                            <span class="status-msg success-msg">{{ Session::get('message') }}</span>
+                        @endif
+                        @if ($errors->first())
+                            <span class="status-msg error-msg">{{ $errors->first() }}</span>
+                        @endif
                         <p v-if="msg.error != null" class="status-msg error-msg">@{{ msg.error }}</p>
                         <p v-if="msg.success != null" class="status-msg success-msg">@{{ msg.success }}</p>
                         <div class="links">
