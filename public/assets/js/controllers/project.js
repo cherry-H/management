@@ -3,8 +3,8 @@ var project = new Vue({
     data: {
         project: { id: null, name : null, weight : null, production : null, dev : null, github: null, description: null},
         newProject: {name: null, project_id: null},
-        newTask: {name: null, weight: null, state: null, priority: null, description: null},
-        currentTask: {name: null, weight: null, state: null, priority: null, description: null},
+        newTask: {name: null, weight: null, state: null, priority: null, description: null, due_date: null},
+        currentTask: {name: null, weight: null, state: null, priority: null, description: null, due_date: null},
         newCredential: {type: null, name: null, hostname: null, username: null, password: null, port: null},
         currentCredential: {type: null, name: null, hostname: null, username: null, password: null, port: null},
         msg: {success: null, error: null},

@@ -40,7 +40,8 @@ class Task extends Model {
         'project_id',
         'state',
         'priority',
-        'description'
+        'description',
+        'due_date',
     ];
 
     protected  $hidden = [

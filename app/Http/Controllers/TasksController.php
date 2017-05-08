@@ -28,10 +28,14 @@ class TasksController extends BaseController {
             return $this->setStatusCode(406)->makeResponse('The name seems to be empty');
         }
 
+        if (!Input::get('due_date')) {
+            return $this->setStatusCode(406)->makeResponse('The deadline seems to be empty');
+        }
+
         Input::merge(array('user_id' => Auth::id(), 'client_id' => $client_id, 'project_id' => $project_id));
 
         Task::create(Input::all());
-        $id = \DB::getPdo()->lastInsertId();
+        $id = \DB::getPdo()->lastInsertId();//返回操作的Id
 
         return $this->setStatusCode(200)->makeResponse('Task created successfully', Task::find($id));
     }
@@ -44,6 +48,10 @@ class TasksController extends BaseController {
 
         if ( Input::get('name') === "") {
             return $this->setStatusCode(406)->makeResponse('The task needs a name');
+        }
+
+        if ( Input::get('due_date') === "") {
+            return $this->setStatusCode(406)->makeResponse('The deadline needs a name');
         }
 
         $input = Input::all();

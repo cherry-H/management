@@ -58,6 +58,10 @@
                 <label>Name:</label>
                 <input v-model="newTask.name" type="text" class="form-control first">
             </div>
+            <div class="col-xs-12 no-side-padding">
+                <label>Deadline:</label>
+                <input v-model="newTask.due_date" type="date" class="form-control">
+            </div>
             <div class="col-xs-4 no-side-padding">
                 <label>Weight:</label>
                 <select v-model="newTask.weight" class="form-control">
@@ -96,6 +100,7 @@
             <textarea v-model="newTask.description" rows="5" class="form-control"></textarea>
             <br>
             <span class="count pull-right">@{{ 250 - newTask.description.length }}</span>
+            <div class="clearfix"></div>
         </form>
     </section>
     <footer>
@@ -120,6 +125,10 @@
             <div class="col-xs-12 no-side-padding">
                 <label>Name:</label>
                 <input v-model="currentTask.name" type="text" class="form-control first">
+            </div>
+            <div class="col-xs-12 no-side-padding">
+                <label>Deadline:</label>
+                <input v-model="currentTask.due_date" type="date" class="form-control">
             </div>
             <div class="col-xs-4 no-side-padding">
                 <label>Weight:</label>

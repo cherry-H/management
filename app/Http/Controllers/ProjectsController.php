@@ -132,15 +132,16 @@ class ProjectsController extends BaseController {
     }
     // Invites a user to the given project.
 	public function invite($project_id, $email){
-        if(trim(strlen($email)) == 0){
+        if(trim(strlen($email)) == 0){//trim移除字符串两侧的空白字符或其他预定义字符
             return $this->setStatusCode(406)->makeResponse('The email field is required!');
         }
 
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return $this->setStatusCode(406)->makeResponse('Please enter a valid email!');
-        }
+        }//filter_vat(过滤的变量，过滤器ID)通过指定过滤器过滤变量,FILTER_VALIDATE_EMAIL把值作为电子邮箱地址验证
 
-        $project_name	= Project::find($project_id)->where(['user_id' => Auth::id()])->pluck('name');
+        $project_name	= Project::whereId($project_id)->pluck('name');
+        //$project_name	= Project::find($project_id)->where(['user_id' => Auth::id()])->pluck('name');
         $owner_id	    = Project::find($project_id)->pluck('user_id');
         $project_url 	= url() . '/projects/'.$project_id;
         $invited_user   = User::whereEmail($email)->get();
