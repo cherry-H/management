@@ -63,6 +63,8 @@ Route::group(['prefix' => '/api/'], function()
     Route::get('projects/{id}/members','ProjectsController@getMembers');
 	Route::post('projects', 'ProjectsController@storeProject');
     Route::put('projects/{id}', 'ProjectsController@updateProject');
+    Route::delete('projects/{id}', 'ProjectsController@deleteProject');
+    Route::delete('projects/{name}', 'ProjectsController@deleteProjectByName');
     Route::post('projects/{id}/{email}/invite', 'ProjectsController@invite');
     Route::delete('projects/{id}/{member_id}/remove', 'ProjectsController@removeMember' );
 

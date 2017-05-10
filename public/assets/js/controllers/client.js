@@ -171,7 +171,33 @@ var client = new Vue({
                 $('.popup-form.new-project').find('input[type=text],textarea,select').filter(':visible:first').focus();
             }
 		 });
-  	}
+  	},
+      deleteProject: function(projectName){
+          showSheet();
+          makePrompt("Are you sure you want to remove this project?","","Not now", "Yes");
+
+          $("#cancel-btn").click(function(){
+              closePrompt();
+          });
+
+          $("#confirm-btn").click(function(){
+              $.ajax({
+                  type: "DELETE",
+                  url: window.baseurl + "/api/projects/"+projectName,
+                  success: function(){
+                      alert("hello");
+                  },
+                  error: function(e){
+                      closePrompt();
+                  }
+              });
+              $.get( window.baseurl + "/api/tasks", function( results ) {
+                  hud.tasks = results.data.length;
+              }).fail(function(e){
+                  console.log( "error "+ e );
+              });
+          });
+      },
   }
 
 });

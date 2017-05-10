@@ -14,21 +14,8 @@ use App\Task;
 use App\Credential;
 use App\Helpers\Helpers;
 
-class ProjectsController extends BaseController {
-
-	// Returns the given project view
-	public function show($id)
-	{   	
-		$project 		=	Project::find($id);
-
-        // Must be refactored as a filter
-		if ( $project->isOwner() == false && $project->isMember() == false ) {
-			return Redirect::to('/hud');
-		}
-
-		return  View::make('ins/projects/show')->with('pTitle', $project->name);
-	}
-
+class ProjectsController extends BaseController
+{
 	// Get all user projects
 	public function getAllUserProjects(){
 		$projects = Project::where('user_id',Auth::id())->get();
@@ -95,6 +82,48 @@ class ProjectsController extends BaseController {
 		return $this->setStatusCode(200)->makeResponse('Project created successfully', Project::find($id));
 	}
 
+    //delete this given project into the database
+    public function deleteProject($id)
+    {
+        if (Input::get($id) === "") {
+            return $this->setStatusCode(406)->makeResponse('The project id is null');
+        }echo 1;
+
+        if (!Project::find($id)) {
+            return  $this->setStatusCode(404)->makeResponse('Could not find the project');
+        }
+
+        // delete all related tasks and credentials
+        Task::where('project_id', $id)->delete();
+        Credential::where('project_id', $id)->delete();
+        Projectuser::where('project_id', $id)->delete();
+
+        // delete projects
+        Project::find($id)->delete();
+        return $this->setStatusCode(200)->makeResponse('The project has been deleted');
+    }
+
+    //delete this given project into the database
+    public function deleteProjectByName($id)
+    {
+        if (Input::get($id) === "") {
+            return $this->setStatusCode(406)->makeResponse('The project id is null');
+        }echo 1;
+
+        if (!Project::find($id)) {
+            return  $this->setStatusCode(404)->makeResponse('Could not find the project');
+        }
+
+        // delete all related tasks and credentials
+        Task::where('project_id', $id)->delete();
+        Credential::where('project_id', $id)->delete();
+        Projectuser::where('project_id', $id)->delete();
+
+        // delete projects
+        Project::find($id)->delete();
+        return $this->setStatusCode(200)->makeResponse('Project deleted successfully');
+    }
+
 	// Update the given project
 	public function updateProject($id){
 		if ( Input::get('name') === "") {
@@ -111,6 +140,19 @@ class ProjectsController extends BaseController {
 		Project::find($id)->update($input);
 		return $this->setStatusCode(200)->makeResponse('The project has been updated');
 	}
+
+    // Returns the given project view
+    public function show($id)
+    {
+        $project 		=	Project::find($id);
+
+        // Must be refactored as a filter
+        if ( $project->isOwner() == false && $project->isMember() == false ) {
+            return Redirect::to('/hud');
+        }
+
+        return  View::make('ins/projects/show')->with('pTitle', $project->name);
+    }
 
     public function getOwner($id){
         $owner_id = Project::whereId($id)->pluck('user_id');
@@ -130,6 +172,7 @@ class ProjectsController extends BaseController {
 
         return $this->setStatusCode(200)->makeResponse('ok.', $members);
     }
+
     // Invites a user to the given project.
 	public function invite($project_id, $email){
         if(trim(strlen($email)) == 0){//trim移除字符串两侧的空白字符或其他预定义字符

@@ -35,6 +35,7 @@
                             </header>
                             <hr>
                             <span v-on:click="showNewProjectForm(client.id, $index)" title="Create new project" class="btn btn-default pull-right">New Project</span>
+                            <div class="project-list">
                             <template v-if="client.projects.length > 0">
                                 <h4>Projects</h4>
                                 <table class="table">
@@ -42,16 +43,21 @@
                                     <tr>
                                         <td>#</td>
                                         <td>Name</td>
+                                        <td>Action</td>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr v-for="project in client.projects">
                                         <td>@{{ $index + 1 }}</td>
                                         <td><a href="{{ route('projects.show', ['id' => '']) }}/@{{ project.id }}">@{{ project.name }}</a></td>
+                                        <td style="font-size: 1.5em">
+                                            <a title="Delete" v-on:click="deleteProject(project.id)"><i class="ion-ios-close-outline"></i></a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </template>
+                            </div>
                             <br>
                             <div class="clearfix"></div>
                             <hr><br><br>
