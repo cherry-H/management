@@ -2,7 +2,7 @@
 
 <style>
     body{
-        background: url("{{ asset('assets/img/galactic_star_background.png') }}") no-repeat;
+        background: url("{{ asset('assets/img/unnamed.png') }}") no-repeat;
         background-size: cover;
     }
 </style>
