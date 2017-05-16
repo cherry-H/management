@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="special-form">
-        <a href="{{ route('home') }}">{{--<img src="{{ \App\Helpers\Helpers::logoUrl()  }}" alt="">--}}</a>
-        <h1 class="text-center">RESET PASSWORD SUCCESS</h1>
+        <a href="{{ route('home') }}"><h3 class="text-center">RESET PASSWORD SUCCESS</h3></a>
         @if ($errors->first())
             <span class="status-msg error-msg">{{ $errors->first() }}</span>
         @endif

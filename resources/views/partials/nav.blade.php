@@ -3,7 +3,9 @@
 {{--</a>--}}
 
 <div class="user-section">
-	<a href="{{ route('profile') }}"><img class="circle" src="{{ App\User::get_gravatar(Auth::user()->email) }}">
+	<a href="{{ route('profile') }}">
+		{!! QrCode::size(100)->color(255,182,193)->backgroundColor(255,240,245)->generate('name:'.Auth::user()->full_name.'<\br>'.'mailto:'.Auth::user()->email) !!}
+	</a>
 	<p>{{Auth::user()->full_name}}</p>
 	</a>
 </div>

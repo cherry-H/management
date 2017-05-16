@@ -3,12 +3,7 @@
 @section('content')
 
   <div class="special-form">
-      <a href="{{ route('home') }}">{{--<img src="{{ \App\Helpers\Helpers::logoUrl()  }}" alt="">--}}
-          <div class="text-center">
-              {!! QrCode::size(100)->color(255,182,193)->backgroundColor(255,240,245)->generate('LaravelAcademy') !!}
-          </div>
-      </a>
-      <h3 class="text-center">LOGIN</h3>
+      <a href="{{ route('home') }}" style="color: #EEEEEE"><h3 class="text-center">LOGIN</h3></a>
       @if ($errors->first())
           <span class="status-msg error-msg">{{ $errors->first() }}</span>
       @endif

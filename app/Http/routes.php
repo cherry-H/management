@@ -102,3 +102,13 @@ Route::post('/password/email', 'Auth\PasswordController@postEmail');
 // 密码重置路由
 Route::get('/password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('/password/reset', 'Auth\PasswordController@postReset');
+
+Route::get('/aaaa', function(){
+    $img = Image::make(public_path('/assets/img/qrcode.png'))->resize(300, 200);
+    return $img->response('png');
+});
+
+// 上传和裁剪图片
+Route::get('photo', 'CropController@getHome')->name('photo');
+Route::post('upload', 'CropController@postUpload');
+Route::post('crop', 'CropController@postCrop');

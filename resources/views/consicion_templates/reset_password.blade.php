@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="special-form">
-        <a href="{{ route('home') }}"></a>
-        <h2 class="text-center">Setting Password</h2>
+        <a href="{{ route('home') }}" style="color: #EEEEEE"><h3 class="text-center">Setting Password</h3></a>
         @if ($errors->first())
             <span class="status-msg error-msg">{{ $errors->first() }}</span>
         @endif

@@ -121,7 +121,7 @@ class ProjectsController extends BaseController
 
         // delete projects
         Project::find($id)->delete();
-        return $this->setStatusCode(200)->makeResponse('Project deleted successfully');
+        return $this->setStatusCode(200)->makeResponse('Project deleted successfully', $id);
     }
 
 	// Update the given project

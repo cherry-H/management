@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="special-form">
-        <a href="{{ route('home') }}">{{--<img src="{{ \App\Helpers\Helpers::logoUrl()  }}" alt="">--}}</a>
-        <h1 class="text-center">SEND EMAIL SUCCESS</h1>
+        <a href="{{ route('home') }}" style="color: #EEEEEE"><h3 class="text-center">SEND EMAIL SUCCESS</h3></a>
         @if ($errors->first())
             <span class="status-msg error-msg">{{ $errors->first() }}</span>
         @endif

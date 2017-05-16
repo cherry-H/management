@@ -14,7 +14,9 @@
             <div class="col-xs-12">
                 <section>
                 <div class="col-xs-12 col-md-4 left-side">
-                    <a href="{{ route('profile') }}"><img class="circle" src="{{ App\User::get_gravatar(Auth::user()->email) }}"></a>
+                    <a href="{{ route('photo') }}">
+                        {!! QrCode::size(100)->color(255,182,193)->backgroundColor(255,240,245)->generate('name:'.Auth::user()->full_name.'<\br>'.'mailto:'.Auth::user()->email) !!}
+                    </a>
                     <div class="info">
                         <p class="name">@{{ user.full_name }}</p>
                         <p class="color-primary">@{{ user.email }}</p>
