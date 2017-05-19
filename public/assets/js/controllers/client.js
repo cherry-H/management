@@ -180,24 +180,21 @@ var client = new Vue({
               closePrompt();
           });
 
-          $("#confirm-btn").click(function(){
+          $("#confirm-btn").click(function(results){
               $.ajax({
-                  type: "DELETE",
+                  type: 'DELETE',
                   url: window.baseurl + "/api/projects/"+projectName,
-                  success: function(){
-                      alert("hello");
+                  data: client.newProject,
+                  success:function (results) {
+                      window.location.reload("http://res.lianjia.com:8077/index.php/clients");
                   },
-                  error: function(e){
-                      closePrompt();
+                  error:function (e) {
+                      window.location.reload("http://res.lianjia.com:8077/index.php/clients");
                   }
               });
-              $.get( window.baseurl + "/api/tasks", function( results ) {
-                  hud.tasks = results.data.length;
-              }).fail(function(e){
-                  console.log( "error "+ e );
-              });
+              closePrompt();
           });
-      },
+      }
   }
 
 });
