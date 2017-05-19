@@ -112,3 +112,6 @@ Route::get('/aaaa', function(){
 Route::get('photo', 'CropController@getHome')->name('photo');
 Route::post('upload', 'CropController@postUpload');
 Route::post('crop', 'CropController@postCrop');
+
+//极验验证码
+Route::get('auth/geetest', 'GeetestController@getGeetest');

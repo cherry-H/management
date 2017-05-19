@@ -17,15 +17,9 @@
             <label for="password" class="color-primary">Password:</label>
             {!! Form::password( 'password', array('class' => 'form-control', "placeholder" => "Password" )) !!}
         </div>
-        <div class="form-group">
-            <div class="col-md-6 col-md-offset-4">
-                <div class="checkbox">
-                    <label>
-                        <input value="remember me" type="checkbox" name="remember"> Remember Me
-                    </label>
-                </div>
-            </div>
-        </div>
+        {!! Geetest::render() !!}<br>
+        {!! Form::checkbox("remember", "remember me") !!}<strong> Remember Me</strong>
+        <br>
         <div class="form-group">
             {!! Form::submit( 'Login', array('class' => 'btn btn-primary btn-wide')) !!}
         </div>
