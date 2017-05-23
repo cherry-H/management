@@ -21,11 +21,12 @@
             <label for="password" class="color-primary">Password:</label>
             {!! Form::password('password', array('class' => 'form-control', "placeholder" => "Password" )) !!}
         </div>
+        <br>{!! Geetest::render() !!}<br>
         <div class="form-group">
             {!! Form::submit('Register', array('class' => 'btn btn-primary btn-wide' )) !!}
         </div>
         {!! Form::close() !!}
-        <p>Have an account? <a href="{{ route('login') }}">login</a></p>
+        Have an account? <a href="{{ route('login') }}">login</a>
     </div>
 
 @stop
