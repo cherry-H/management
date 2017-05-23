@@ -30,6 +30,7 @@
     </div>
     <div class="form-group">
         <button v-on:click="createCredential(project.user_id, project.id)" class="btn btn-primary">Save</button>
+        <a href="/excel/export/@{{ project.id }}"><button class="btn btn-primary">Export</button></a>
     </div>
 </form>
 <hr>

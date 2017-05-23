@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Projectuser;
 use App\User;
+use App\Project;
+use App\Task;
+use App\Credential;
+use App\Helpers\Helpers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use App\Project;
-use App\Task;
-use App\Credential;
-use App\Helpers\Helpers;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProjectsController extends BaseController
 {
@@ -223,4 +224,23 @@ class ProjectsController extends BaseController
 		return $this->setStatusCode(200)->makeResponse('Member has been removed from this project.');
 	}
 
+	//excel文件导出功能
+    public function export($id)
+    {
+        $header      = ['Name', 'Username', 'Password', 'Hostname', 'Port'];
+        $fileName    = 'Credientials表格';
+        $credentials = Credential::select('name', "username", "password", "hostname", "port")->where('project_id', $id)->get()->toArray();
+
+        array_unshift($credentials, $header);//array_unshift 在数组开头插入一个或多个单元
+        Excel::create($fileName, function ($excel) use ($credentials) {
+            $excel->sheet('sheet1', function ($sheet) use ($credentials) {
+                $sheet->rows($credentials);
+            });
+        })->export('xls');
+    }
+
+    public function import()
+    {
+
+    }
 }

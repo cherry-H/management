@@ -141,6 +141,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Germey\Geetest\GeetestServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
         /*
@@ -200,6 +201,7 @@ return [
         'QrCode'    => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Image'     => Intervention\Image\Facades\Image::class,
         'Geetest'   => Germey\Geetest\Geetest::class,
+        'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
 

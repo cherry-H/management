@@ -115,3 +115,7 @@ Route::post('crop', 'CropController@postCrop');
 
 //极验验证码
 Route::get('auth/geetest', 'GeetestController@getGeetest');
+
+//导入导出数据
+Route::get('excel/export/{id}','ProjectsController@export')->name('export');
+Route::get('excel/import','ProjectsController@import');
